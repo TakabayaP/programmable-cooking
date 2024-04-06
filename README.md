@@ -1,16 +1,7 @@
 # Programmable Cooking
 
 ## Setting up
-
-```bash
 git clone git@github.com:TakabayaP/programmable-cooking.git
-curl -fsSL https://bun.sh/install | bash
-bun create remix
-```
-### Frontend
-```bash
-make run-dev
-```
 
 ## MVP
 ### Frontend

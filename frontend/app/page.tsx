@@ -24,6 +24,9 @@ export default function Home() {
             <RecipeCard recipe={recipe} />
           </li>
           <li>
+            <RecipeCard recipe={{...recipe,title:"焼豚チャーハン", description: "特殊なチャーハンのレシピです。具材には特別なスパイスを使用し、独特の風味を出しています。炒める際には高温で素早く調理し、ご飯がパラパラになるように仕上げます。"}} />
+          </li>
+          <li>
             <RecipeCard recipe={recipe} />
           </li>
         </ul>

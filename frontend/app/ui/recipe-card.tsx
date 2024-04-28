@@ -1,14 +1,14 @@
-export function RecipeCard() {
+import Link from "next/link";
+import {Recipe} from "@/app/lib/definition";
+
+export function RecipeCard({recipe}: {recipe: Recipe}){
     return (
-        <div className="card card-compact w-96 bg-base-100 shadow-xl">
-            <figure><img src="/600x400.png" alt="Fried rice" /></figure>
-            <div className="card-body">
-                <h2 className="card-title">炒飯</h2>
-                <p>基本のチャーハンの作り方を丁寧に解説します</p>
-                <div className="card-actions justify-end">
-                    <button className="btn btn-primary">レシピを見る</button>
-                </div>
+        <Link href={`/recipe/${recipe.id}`} className="card card-compact w-full bg-base-100 shadow-xl">
+            <figure><img src={recipe.image.src} alt={recipe.image.alt} /></figure>
+            <div className="card-body m-4">
+                <h2 className="card-title">{recipe.title}</h2>
+                <p>{recipe.description}</p>
             </div>
-        </div>
+        </Link>
     );
 }

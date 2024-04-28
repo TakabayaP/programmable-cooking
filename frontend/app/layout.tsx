@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from 'next-themes';
 import "./globals.css";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +22,7 @@ export default function RootLayout({
         <ThemeProvider>
           <div className="navbar bg-primary sticky top-0 z-30">
             <div className="flex-1">
-              <a className="btn text-xl btn-primary">ReRecipe</a>
+              <Link href="/" className="btn text-xl btn-primary">ReRecipe</Link>
             </div>
             <div className="flex-none">
               <label className="flex cursor-pointer gap-2">
@@ -29,11 +30,6 @@ export default function RootLayout({
                 <input type="checkbox" value="bumblebee" className="toggle theme-controller" />
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
               </label>
-            </div>
-            <div className="flex-none">
-              <button className="btn btn-square btn-ghost">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg>
-              </button>
             </div>
           </div>
           <div>

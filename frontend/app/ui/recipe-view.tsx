@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
 import {
   faCaretLeft,
   faCaretRight,
@@ -13,12 +12,11 @@ export function RecipeView({ }) {
     return (
         <div>
             <div className="md:grid md:grid-cols-2 md:gap-8 mb-8">
-                <Image
+                <img
                     src="/fried_rice.jpg"
                     width={3024}
                     height={4032}
                     alt="Screenshots of the dashboard project showing desktop version"
-                    priority={true}
                     className="mb-8 md:mb-0" />
                 <div className="grid grid-cols-1 gap-4">
                     <div>

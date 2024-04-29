@@ -8,6 +8,16 @@ run-dev: ## run nextjs in development mode
 	@echo "Running frontend in development mode..."
 	@bun run dev
 
+.PHONY: serve-ssg
+serve-ssg: ## serve SSG files
+	@echo "Serving SSG files..."
+	@npx serve@latest out
+
+.PHONY: run-prod
+run-prod: ## build frontend and serve
+	@make build
+	@make serve-ssg
+
 .PHONY: help
 help: ## display this help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \

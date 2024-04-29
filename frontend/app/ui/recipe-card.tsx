@@ -3,7 +3,7 @@ import {Recipe} from "@/app/lib/definition";
 
 export function RecipeCard({recipe}: {recipe: Recipe}){
     return (
-        <Link href={`/recipies/${recipe.id}`} className="card card-compact w-full h-full bg-base-100 shadow-xl">
+        <Link href={`/recipies/${recipe.id}`} className="card card-compact w-full h-full shadow-xl">
             <figure><img src={recipe.image.src} alt={recipe.image.alt} /></figure>
             <div className="card-body m-4">
                 <h2 className="card-title">{recipe.title}</h2>

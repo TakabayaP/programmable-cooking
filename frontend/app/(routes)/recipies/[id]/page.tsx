@@ -1,10 +1,7 @@
 import { readFileSync } from "fs";
 import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
-import {
-  Recipe,
-  RecipeData,
-} from "@/app/lib/definition";
+import { RecipeData } from "@/app/lib/definition";
 import { RecipeView } from "@/app/ui/recipe-view";
 
 export function generateStaticParams() {

@@ -48,6 +48,7 @@ export function RecipeView({ markdown, recipeData }: RecipeViewProps) {
 				onClick={() => {
 					if (servings - 1 > 0) setServings(servings - 1);
 				}}
+				type="button"
 			>
 				<FontAwesomeIcon icon={faCaretLeft} />
 			</button>
@@ -55,6 +56,7 @@ export function RecipeView({ markdown, recipeData }: RecipeViewProps) {
 			<button
 				className="btn btn-ghost"
 				onClick={() => setServings(servings + 1)}
+				type="button"
 			>
 				<FontAwesomeIcon icon={faCaretRight} />
 			</button>

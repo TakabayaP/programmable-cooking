@@ -18,6 +18,14 @@ run-prod: ## build frontend and serve
 	@make build
 	@make serve-ssg
 
+.PHONY: lint
+lint: ## lint frontend
+	@echo "Linting frontend..."
+	@npx @biomejs/biome lint --apply .
+	@npx @biomejs/biome format --write .
+	@npx @biomejs/biome check --apply .
+	@npx @biomejs/biome ci .
+
 .PHONY: help
 help: ## display this help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \

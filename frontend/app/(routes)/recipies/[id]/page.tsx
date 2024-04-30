@@ -5,17 +5,17 @@ import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
 
 export function generateStaticParams() {
-	return [{ id: "0" }];
+  return [{ id: "0" }];
 }
 
 export default async function Recipe({ params }: { params: { id: string } }) {
-	const { data, content } = matter(
-		readFileSync(`recipies/${params.id}.mdx`, "utf-8"),
-	);
-	const markdown = await serialize(content);
-	return (
-		<div>
-			<RecipeView markdown={markdown} recipeData={data as RecipeData} />
-		</div>
-	);
+  const { data, content } = matter(
+    readFileSync(`recipies/${params.id}.mdx`, "utf-8"),
+  );
+  const markdown = await serialize(content);
+  return (
+    <div>
+      <RecipeView markdown={markdown} recipeData={data as RecipeData} />
+    </div>
+  );
 }

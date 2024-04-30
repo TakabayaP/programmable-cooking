@@ -2,9 +2,17 @@
 build-front: ## build frontend
 	@cd frontend && make build
 
-.PHONY: run-front
-run-front: ## run frontend in development mode
+.PHONY: run-front-dev
+run-front-dev: ## run frontend in development mode
 	@cd frontend && make run-dev
+
+.PHONY: run-front-prod
+run-front-prod: ## build frontend and serve
+	@cd frontend && make run-prod
+
+.PHONY: 
+run-prod: ## serve SSG files
+	@cd frontend && make serve-static
 
 .PHONY: help
 help: ## display this help message

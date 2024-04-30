@@ -15,7 +15,7 @@ interface RecipeViewProps {
     recipeData: RecipeData;
 }
 
-export function RecipeView({ markdown }: RecipeViewProps) {
+export function RecipeView({ markdown, recipeData }: RecipeViewProps) {
     const [servings, setServings] = useState<number>(1);
     return (
         <div>
@@ -29,7 +29,7 @@ export function RecipeView({ markdown }: RecipeViewProps) {
                 <div className="grid grid-cols-1 gap-4">
                     <div>
                         <h1 className="text-4xl font-bold mb-4 border-b-2">
-                            基本のチャーハン
+                            {recipeData.title}
                         </h1>
                         <p>
                             基本のチャーハンは、シンプルで美味しい炒飯のレシピです。ご飯と具材を炒めて、醤油や塩で味付けしましょう。簡単に作れるので、忙しい日のランチやディナーにぴったりです。

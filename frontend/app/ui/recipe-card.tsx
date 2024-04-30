@@ -1,5 +1,5 @@
-import Link from "next/link";
 import type { Recipe } from "@/app/lib/definition";
+import Link from "next/link";
 
 export function RecipeCard({ recipe }: { recipe: Recipe }) {
 	return (

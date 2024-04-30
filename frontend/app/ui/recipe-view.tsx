@@ -1,6 +1,4 @@
 "use client";
-import React, { useState } from "react";
-import type { MDXRemoteSerializeResult } from "next-mdx-remote";
 import type { RecipeData } from "@/app/lib/definition";
 import {
 	faCaretLeft,
@@ -8,6 +6,8 @@ import {
 	faClock,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { MDXRemoteSerializeResult } from "next-mdx-remote";
+import React, { useState } from "react";
 import { MDXContent } from "./mdx-content";
 
 interface RecipeViewProps {

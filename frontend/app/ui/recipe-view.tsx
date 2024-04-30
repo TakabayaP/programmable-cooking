@@ -1,13 +1,19 @@
 "use client";
 import React, { useState } from "react";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import {
   faCaretLeft,
   faCaretRight,
   faClock,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { MDXContent } from "./mdx-content";
 
-export function RecipeView({ }) {
+interface RecipeViewProps {
+    markdown: MDXRemoteSerializeResult;
+}
+
+export function RecipeView({ markdown }: RecipeViewProps) {
     const [servings, setServings] = useState<number>(1);
     return (
         <div>
@@ -56,6 +62,10 @@ export function RecipeView({ }) {
                 <li>醤油: 大さじ{servings}</li>
                 <li>サラダ油: 大さじ{servings}</li>
             </ul>
+            <h2 className="text-2xl font-bold mb-4 border-b-2">
+                作り方
+            </h2>
+            <MDXContent source={markdown} data={{ "servings": servings}} />
         </div>
     )
 }

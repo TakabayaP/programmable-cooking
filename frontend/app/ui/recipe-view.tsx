@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
+import { RecipeData } from "@/app/lib/definition";
 import {
   faCaretLeft,
   faCaretRight,
@@ -11,6 +12,7 @@ import { MDXContent } from "./mdx-content";
 
 interface RecipeViewProps {
     markdown: MDXRemoteSerializeResult;
+    recipeData: RecipeData;
 }
 
 export function RecipeView({ markdown }: RecipeViewProps) {

@@ -43,5 +43,5 @@ export const Units: { [key: string]: Unit } = {
     toString(quantity: string) {
       return `小さじ${quantity}`;
     },
-  }
+  },
 };

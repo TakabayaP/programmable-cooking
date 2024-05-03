@@ -15,7 +15,10 @@ export default async function Recipe({ params }: { params: { id: string } }) {
   const markdown = await serialize(content);
   return (
     <div>
-      <RecipeView markdown={markdown} data={data as RecipeDataWithStringIngredients} />
+      <RecipeView
+        markdown={markdown}
+        data={data as RecipeDataWithStringIngredients}
+      />
     </div>
   );
 }

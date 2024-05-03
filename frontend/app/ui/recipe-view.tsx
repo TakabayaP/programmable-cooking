@@ -11,8 +11,8 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
 import React, { useState } from "react";
-import { MDXContent } from "./mdx-content";
 import { parseIngredients } from "../lib/util";
+import { MDXContent } from "./mdx-content";
 
 interface RecipeViewProps {
   markdown: MDXRemoteSerializeResult;

@@ -1,5 +1,8 @@
 "use client";
-import type { RecipeData } from "@/app/lib/definition";
+import type {
+  RecipeData,
+  RecipeDataWithStringIngredients,
+} from "@/app/lib/definition";
 import {
   faCaretLeft,
   faCaretRight,
@@ -9,14 +12,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
 import React, { useState } from "react";
 import { MDXContent } from "./mdx-content";
+import { parseIngredients } from "../lib/util";
 
 interface RecipeViewProps {
   markdown: MDXRemoteSerializeResult;
-  recipeData: RecipeData;
+  data: RecipeDataWithStringIngredients;
 }
 
-export function RecipeView({ markdown, recipeData }: RecipeViewProps) {
+export function RecipeView({ markdown, data }: RecipeViewProps) {
   const [servings, setServings] = useState<number>(1);
+  const recipeData: RecipeData = {
+    ...data,
+    ingredients: parseIngredients(data.ingredients),
+  };
   return (
     <div>
       <div className="md:grid md:grid-cols-2 md:gap-8 mb-8">
@@ -29,12 +37,8 @@ export function RecipeView({ markdown, recipeData }: RecipeViewProps) {
         />
         <div className="grid grid-cols-1 gap-4">
           <div>
-            <h1 className="text-4xl font-bold mb-4 border-b-2">
-              {recipeData.title}
-            </h1>
-            <p>
-              基本のチャーハンは、シンプルで美味しい炒飯のレシピです。ご飯と具材を炒めて、醤油や塩で味付けしましょう。簡単に作れるので、忙しい日のランチやディナーにぴったりです。
-            </p>
+            <h1 className="text-4xl font-bold mb-4 border-b-2">{data.title}</h1>
+            <p>{data.comment}</p>
           </div>
           <div>
             <FontAwesomeIcon icon={faClock} className="inline w-4  mr-2" />
@@ -62,15 +66,20 @@ export function RecipeView({ markdown, recipeData }: RecipeViewProps) {
       </button>
       人前
       <ul>
-        <li>ご飯: {1 * servings}合</li>
-        <li>玉ねぎ: {0.5 * servings}個</li>
-        <li>にんじん: {0.5 * servings}本</li>
-        <li>卵: {1 * servings}個</li>
-        <li>鶏もも肉: {50 * servings}g</li>
-        <li>塩: 小さじ{0.5 * servings}</li>
-        <li>こしょう: 少々</li>
-        <li>醤油: 大さじ{servings}</li>
-        <li>サラダ油: 大さじ{servings}</li>
+        {recipeData.ingredients.map((ingredient) => (
+          <li key={ingredient.ingredient.name}>
+            <ul>
+              {ingredient.ingredient.quantities.map((v) => (
+                <li key={v.unit.name}>
+                  {ingredient.ingredient.name}:{" "}
+                  {v.unit.toString(
+                    (ingredient.quantity * servings * v.quantity).toString(),
+                  )}
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
       </ul>
       <h2 className="text-2xl font-bold mb-4 border-b-2">作り方</h2>
       <MDXContent source={markdown} data={{ servings: servings }} />

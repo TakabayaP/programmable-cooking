@@ -1,5 +1,5 @@
 import { readFileSync } from "node:fs";
-import type { RecipeData } from "@/app/lib/definition";
+import type { RecipeDataWithStringIngredients } from "@/app/lib/definition";
 import { RecipeView } from "@/app/ui/recipe-view";
 import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
@@ -15,7 +15,7 @@ export default async function Recipe({ params }: { params: { id: string } }) {
   const markdown = await serialize(content);
   return (
     <div>
-      <RecipeView markdown={markdown} recipeData={data as RecipeData} />
+      <RecipeView markdown={markdown} data={data as RecipeDataWithStringIngredients} />
     </div>
   );
 }
